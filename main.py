@@ -9,6 +9,8 @@ counter = 1
 def add_note(title: str, content: str):
     global counter
     note = {"Title": title, "Content": content}
+    if not title or not content:
+        return {"error": "Title and content cannot be empty"}
     notes_with_id[counter] = note
     counter += 1
     return {counter-1: {title: content}}
@@ -19,15 +21,24 @@ def view_notes():
 
 @app.get("/notes/{note_id}")
 def view_note(note_id: int):
-    return f"{note_id}: {notes_with_id[note_id]}"
+    if note_id not in notes_with_id:
+        return {"error": "Note not found"}
+    else: return {note_id: notes_with_id[note_id]}
 
 @app.delete("/notes/{note_id}")
 def delete_note(note_id: int):
+    if note_id not in notes_with_id:
+        return {"error": "Note not found"}
     del notes_with_id[note_id]
+    return {"success": True, "message": "Note deleted"}
 
 @app.put("/notes/{note_id}")
 def update_note(note_id: int, title: str, content: str):
+    if not title or not content:
+        return {"error": "Title and content cannot be empty"}
+    if note_id not in notes_with_id:
+        return {"error": "Note not found"}
     note = notes_with_id[note_id]
     note["Title"] = title
     note["Content"] = content
-
+    return {note_id: {title: content}}
