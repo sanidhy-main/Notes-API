@@ -7,70 +7,9 @@ counter = 1
 
 @app.get("/", response_class=HTMLResponse)
 def home():
-    return """
-    <html>
-        <head>
-            <title>Notes API</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    background: #f7f8fa;
-                    color: #333;
-                    text-align: center;
-                    padding: 60px 20px;
-                }
-                h1 {
-                    color: #222;
-                    margin-bottom: 10px;
-                }
-                p {
-                    font-size: 18px;
-                    margin-bottom: 30px;
-                }
-                a.button {
-                    display: inline-block;
-                    background-color: #0078D7;
-                    color: white;
-                    padding: 12px 24px;
-                    border-radius: 8px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    margin-bottom: 40px;
-                }
-                a.button:hover {
-                    background-color: #005fa3;
-                }
-                footer {
-                    margin-top: 60px;
-                    font-size: 14px;
-                    color: #555;
-                }
-                footer a {
-                    color: white;
-                    background-color: #0078D7;
-                    padding: 8px 16px;
-                    border-radius: 6px;
-                    text-decoration: none;
-                    display: inline-block;
-                    margin-top: 10px;
-                }
-                footer a:hover {
-                    background-color: #005fa3;
-                }
-            </style>
-        </head>
-        <body>
-            <h1>📝 Notes API</h1>
-            <p>Create, read, update, and delete your notes easily.</p>
-            <a href="/docs" class="button">Open Swagger UI</a>
-
-            <footer>
-                <p>Made with ❤️ by Sanidhy Chaturvedi</p>
-                <a href="https://github.com/sanidhy-main" target="_blank">github.com/sanidhy-main</a>
-            </footer>
-        </body>
-    </html>
-    """
+    with open("mainpage.html", "r", encoding="utf-8") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content)
 
 @app.post("/note")
 def add_note(title: str, content: str):
