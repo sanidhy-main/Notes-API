@@ -50,4 +50,3 @@ Open in your browser:
 
 ⚙️ http://127.0.0.1:8000/docs
  → to explore and test the API using Swagger UI
-4. Open http://127.0.0.1:8000/docs to explore the Swagger UI.
