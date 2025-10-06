@@ -22,20 +22,32 @@ A simple CRUD Notes API built with **FastAPI**. This project demonstrates a func
 
 ---
 
-## How to Run
-1. Clone the repository:  
+🚀 How to Run
+
+Clone the repository:
+
 ```
-git clone <your-repo-url>
+git clone https://github.com/sanidhy-main/Notes-API.git
+cd Notes-API
 ```
 
-2. Navigate into the folder and install dependencies:
+Install dependencies:
+
 ```
 pip install fastapi uvicorn
 ```
 
-3. Run the API server:
+Run the API server:
+
 ```
 uvicorn main:app --reload
 ```
 
+Open in your browser:
+
+🌐 http://127.0.0.1:8000
+ → for the custom homepage
+
+⚙️ http://127.0.0.1:8000/docs
+ → to explore and test the API using Swagger UI
 4. Open http://127.0.0.1:8000/docs to explore the Swagger UI.
