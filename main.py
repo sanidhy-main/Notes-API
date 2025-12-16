@@ -1,15 +1,8 @@
 from fastapi import FastAPI
 from fastapi import HTTPException
-from fastapi.responses import HTMLResponse
 app = FastAPI()
 notes_with_id = {}
 counter = 1
-
-@app.get("/", response_class=HTMLResponse)
-def home():
-    with open("mainpage.html", "r", encoding="utf-8") as f:
-        html_content = f.read()
-    return HTMLResponse(content=html_content)
 
 @app.post("/note")
 def add_note(title: str, content: str):
