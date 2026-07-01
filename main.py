@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
-app = FastAPI()
+app = FastAPI(
+    title="Sanidhy's Notes API",
+    description="A simple REST API for managing notes, built with FastAPI.",
+    version="1.0.0",
+)
 notes_with_id = {}
 counter = 1
 
